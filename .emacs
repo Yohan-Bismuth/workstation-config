@@ -13,8 +13,6 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  )
-(require 'color-theme)
-;;(color-theme-initialize)
 
 
 (setq show-trailing-whitespace t)
@@ -22,10 +20,6 @@
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (require 'rvm)
 (require 'chef-mode)
-
-(add-to-list 'load-path "~/.emacs.d/lisp/git-commit-mode/")
-(require 'git-commit)
-(add-hook 'git-commit-mode-hook 'turn-on-flyspell)
 
 (add-to-list 'load-path "~/.emacs.d/lisp/web-mode")
 (require 'web-mode)
@@ -37,27 +31,6 @@
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 
-(add-to-list 'load-path "~/.emacs.d/lisp/jdee-2.4.1/lisp")
-(load "jde")
-(defun set-frame-size-according-to-resolution ()
-  (interactive)
-  (if window-system
-  (progn
-    ;; use 120 char wide window for largeish displays
-    ;; and smaller 80 column windows for smaller displays
-    ;; pick whatever numbers make sense for you
-    (if (> (x-display-pixel-width) 1280)
-           (add-to-list 'default-frame-alist (cons 'width 100))
-           (add-to-list 'default-frame-alist (cons 'width 80)))
-    ;; for the height, subtract a couple hundred pixels
-    ;; from the screen height (for panels, menubars and
-    ;; whatnot), then divide by the height of a char to
-    ;; get the height we want
-    (add-to-list 'default-frame-alist
-         (cons 'height (/ (- (x-display-pixel-height) 200)
-                             (frame-char-height)))))))
-
-(set-frame-size-according-to-resolution)
 (put 'downcase-region 'disabled nil)
 
 (setq make-backup-files nil)
@@ -115,10 +88,6 @@
 	  (lambda ()
 	    (make-local-variable 'js-indent-level)
 	    (setq js-indent-level 2)))
-
-(add-to-list 'load-path "~/.emacs.d/groovy-mode/")
-(require 'groovy-mode)
-    (add-to-list 'auto-mode-alist '("\\.groovy$" . groovy-mode))
 
 ;;Remove '\' wrap character for truncated lines
 (set-display-table-slot standard-display-table 'wrap ?\ )
